@@ -6,7 +6,9 @@ Simple RESTFul Flask application (still in development) with bunch of automated 
 So far active and tested endpoints are:
 
 GET /users
-GET /users/<name>
+
+GET /users/name
+
 POST /register
 
 ### Steps to run app and tests:
