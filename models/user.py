@@ -1,5 +1,6 @@
 import sqlite3
 
+
 class UserModel:
 
     def __init__(self, id, username, user_email):
@@ -19,6 +20,15 @@ class UserModel:
             for row in rows:
                 users.append(UserModel(row[0], row[1], row[2]))
             return users
+        connection.close()
+
+    @classmethod
+    def insert_into_table(cls, username, user_email ):
+        connection = sqlite3.connect('./db/datashop.db')
+        cursor = connection.cursor()
+        query = 'INSERT INTO user VALUES(NULL, ?, ?)'
+        cursor.execute(query, (username, user_email))
+        connection.commit()
         connection.close()
 
     @classmethod
