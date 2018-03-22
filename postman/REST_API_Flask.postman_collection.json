@@ -1,0 +1,88 @@
+{
+	"info": {
+		"name": "REST_API_Flask",
+		"_postman_id": "e5f68829-5864-4a31-ad4e-8df390d1a5e4",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "127.0.0.1:5000/users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "127.0.0.1:5000/users",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"users"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "127.0.0.1:5000/users/<name>",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "127.0.0.1:5000/users/<name>",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"users",
+						"<name>"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "127.0.0.1:5000/register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\t\n\t\"username\": \"Test\",\n\t\"user_email\": \"test@email.com\"\n}"
+				},
+				"url": {
+					"raw": "127.0.0.1:5000/register",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"register"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
