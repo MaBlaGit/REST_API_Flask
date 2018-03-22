@@ -10,7 +10,7 @@ class UserEndpointsTest(unittest.TestCase):
     def setUpClass(cls):
         if os.path.exists('../db/datashop.db'):
             os.system('rm ../db/datashop.db')
-            create_database('../db/datashop.db')
+        create_database('../db/datashop.db')
         cls.uri = 'http://127.0.0.1:5000'
 
     def test_users_name_status_code(cls):
