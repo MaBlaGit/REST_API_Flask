@@ -14,8 +14,11 @@ POST /register
 ### Steps to run app and tests:
 
 1.Install Python (tested on Python 3.5.2, Linux Ubuntu 16.04 LTS)
+
 2.Create virtualenv
+
 3.Download project from GitHub
+
 4.Go to root folder of the project, install required modules:
 
 ```
