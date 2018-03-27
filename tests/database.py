@@ -34,12 +34,12 @@ def create_database(db_path):
     cursor.execute('INSERT OR REPLACE INTO user VALUES(4, "test_4", "test_4@test.pl");')
     cursor.execute('INSERT OR REPLACE INTO user VALUES(5, "test_5", "test_5@test.pl");')
 
-    cursor.execute('INSERT OR REPLACE INTO store VALUES(1, "car", 10999.99);')
-    cursor.execute('INSERT OR REPLACE INTO store VALUES(2, "bike", 45.99);')
-    cursor.execute('INSERT OR REPLACE INTO store VALUES(3, "motorbike", 599.99);')
-    cursor.execute('INSERT OR REPLACE INTO store VALUES(4, "go-cart", 20050.99);')
+    cursor.execute('INSERT OR REPLACE INTO store VALUES(1, "car_1", 100.00);')
+    cursor.execute('INSERT OR REPLACE INTO store VALUES(2, "car_2", 101.00);')
+    cursor.execute('INSERT OR REPLACE INTO store VALUES(3, "car_3", 102.00);')
+    cursor.execute('INSERT OR REPLACE INTO store VALUES(4, "car_4", 102.00);')
 
-    cursor.execute('INSERT OR REPLACE INTO purchase_history VALUES(1, "car", 1, 1);')
+    cursor.execute('INSERT OR REPLACE INTO purchase_history VALUES(1, "car_1", 1, 1);')
 
     connection.commit()
     connection.close()
