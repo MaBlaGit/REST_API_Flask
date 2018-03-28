@@ -8,9 +8,9 @@ class UserEndpointsTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        if os.path.exists('../db/datashop.db'):
-            os.system('rm ../db/datashop.db')
-        create_database('../db/datashop.db')
+        if os.path.exists('../../db/datashop.db'):
+            os.system('rm ../../db/datashop.db')
+        create_database('../../db/datashop.db')
         cls.uri = 'http://127.0.0.1:5000'
 
     def test_users_name_status_code(cls):
@@ -53,7 +53,7 @@ class UserEndpointsTest(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        os.system('rm ../db/datashop.db')
+        os.system('rm ../../db/datashop.db')
 
 
 if __name__ == '__main__':

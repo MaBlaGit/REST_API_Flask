@@ -35,6 +35,9 @@ class UserRegister(Resource):
 
         data_payload = parser.parse_args()
 
-        UserModel.insert_into_table(data_payload['username'],
-                                    data_payload['user_email'])
-        return {'message': 'User successfully added to the database!'}, 201
+        if UserModel.find_by_name(data_payload['username']):
+            return {'message': 'User with the same name already exists in database!'}
+        else:
+            UserModel.insert_into_table(data_payload['username'],
+                                        data_payload['user_email'])
+            return {'message': 'User successfully added to the database!'}, 201
