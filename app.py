@@ -15,5 +15,5 @@ api.add_resource(Store, '/product/<string:product>')
 api.add_resource(StoreProductList, '/products')
 
 if __name__ == '__main__':
-    create_database('./db/datashop.db')
+    # create_database('./db/datashop.db')
     app.run()
