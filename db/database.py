@@ -28,11 +28,11 @@ def create_database(db_path):
                          )
     cursor.execute(create_store_table)
 
-    cursor.execute('INSERT OR REPLACE INTO user VALUES(1, "test_1", "test_1@test.pl");')
-    cursor.execute('INSERT OR REPLACE INTO user VALUES(2, "test_2", "test_2@test.pl");')
-    cursor.execute('INSERT OR REPLACE INTO user VALUES(3, "test_3", "test_3@test.pl");')
-    cursor.execute('INSERT OR REPLACE INTO user VALUES(4, "test_4", "test_4@test.pl");')
-    cursor.execute('INSERT OR REPLACE INTO user VALUES(5, "test_5", "test_5@test.pl");')
+    cursor.execute('INSERT OR REPLACE INTO user VALUES(1, "test_1", "qwert");')
+    cursor.execute('INSERT OR REPLACE INTO user VALUES(2, "test_2", "asdfg");')
+    cursor.execute('INSERT OR REPLACE INTO user VALUES(3, "test_3", "qwaszx");')
+    cursor.execute('INSERT OR REPLACE INTO user VALUES(4, "test_4", "zxcvb");')
+    cursor.execute('INSERT OR REPLACE INTO user VALUES(5, "test_5", "zxasqw");')
 
     cursor.execute('INSERT OR REPLACE INTO store VALUES(1, "car", 10999.99);')
     cursor.execute('INSERT OR REPLACE INTO store VALUES(2, "bike", 45.99);')
@@ -40,6 +40,9 @@ def create_database(db_path):
     cursor.execute('INSERT OR REPLACE INTO store VALUES(4, "go-cart", 20050.99);')
 
     cursor.execute('INSERT OR REPLACE INTO purchase_history VALUES(1, "car_1", 1, 1);')
+    cursor.execute('INSERT OR REPLACE INTO purchase_history VALUES(2, "car_1", 2, 1);')
+    cursor.execute('INSERT OR REPLACE INTO purchase_history VALUES(3, "car_1", 2, 1);')
+    cursor.execute('INSERT OR REPLACE INTO purchase_history VALUES(4, "car_1", 1, 1);')
 
     connection.commit()
     connection.close()
