@@ -19,9 +19,7 @@ class PurchaseHistoryModel:
         products_history_list = list()
 
         user = UserModel.find_by_name(name)
-        if not user:
-            return {'message': 'Cannot find user in database!'}
-        else:
+        if user:
             connection = sqlite3.connect(cls.db_path)
             cursor = connection.cursor()
             query = 'SELECT * FROM purchase_history WHERE user_id=?;'
