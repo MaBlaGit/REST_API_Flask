@@ -13,18 +13,6 @@ class UserEndpointsTest(unittest.TestCase):
         create_database('../../db/datashop.db')
         cls.uri = 'http://127.0.0.1:5000'
 
-    def test_users_name_status_code(cls):
-        cls.uri += '/users/test_1'
-        uri_request = requests.get(cls.uri)
-        cls.assertEqual(200, uri_request.status_code)
-
-    def test_users_name_response_check(cls):
-        cls.uri += '/users/test_1'
-        uri_request = requests.get(cls.uri).content
-        content_decode = json.loads(uri_request.decode('utf-8'))
-        check_value = content_decode.get('user')[0].get('username')
-        cls.assertEqual('test_1', check_value)
-
     def test_users_status_code(cls):
         cls.uri += '/users'
         uri_request = requests.get(cls.uri)
@@ -32,7 +20,7 @@ class UserEndpointsTest(unittest.TestCase):
 
     def test_add_user_to_database(cls):
         payload = {	'username': 'test_6',
-	                'user_email': 'test_6@test.pl'}
+	                'password': 'test_6@test.pl'}
         cls.uri += '/register'
         post = requests.post(cls.uri, json=payload)
         content_decode = json.loads(post.content.decode('utf-8'))

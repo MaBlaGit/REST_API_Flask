@@ -6,7 +6,7 @@ def create_database(db_path):
     create_user_table = '{}{}{}'.format(
                         'CREATE TABLE IF NOT EXISTS',
                         ' user(id INTEGER PRIMARY KEY,',
-                        ' username text NOT NULL, user_email text NOT NULL);'
+                        ' username text NOT NULL, password text NOT NULL);'
                         )
 
     cursor.execute(create_user_table)
@@ -28,11 +28,11 @@ def create_database(db_path):
                          )
     cursor.execute(create_store_table)
 
-    cursor.execute('INSERT OR REPLACE INTO user VALUES(1, "test_1", "test_1@test.pl");')
-    cursor.execute('INSERT OR REPLACE INTO user VALUES(2, "test_2", "test_2@test.pl");')
-    cursor.execute('INSERT OR REPLACE INTO user VALUES(3, "test_3", "test_3@test.pl");')
-    cursor.execute('INSERT OR REPLACE INTO user VALUES(4, "test_4", "test_4@test.pl");')
-    cursor.execute('INSERT OR REPLACE INTO user VALUES(5, "test_5", "test_5@test.pl");')
+    cursor.execute('INSERT OR REPLACE INTO user VALUES(1, "test_1", "qwert");')
+    cursor.execute('INSERT OR REPLACE INTO user VALUES(2, "test_2", "qwaszx");')
+    cursor.execute('INSERT OR REPLACE INTO user VALUES(3, "test_3", "zxasqw");')
+    cursor.execute('INSERT OR REPLACE INTO user VALUES(4, "test_4", "asdfg");')
+    cursor.execute('INSERT OR REPLACE INTO user VALUES(5, "test_5", "qwerty");')
 
     cursor.execute('INSERT OR REPLACE INTO store VALUES(1, "car", 10999.99);')
     cursor.execute('INSERT OR REPLACE INTO store VALUES(2, "bike", 45.99);')

@@ -12,11 +12,11 @@ class UserModelTests(unittest.TestCase):
     def test_user_model_params(self):
         self.assertEqual(1, self.user_model.id)
         self.assertEqual('Test', self.user_model.username)
-        self.assertEqual('test@test.com', self.user_model.user_email)
+        self.assertEqual('test@test.com', self.user_model.password)
 
     def test_json_return(self):
         json_output = {'username': 'Test', 'id': 1,
-                       'user_email': 'test@test.com'}
+                       'password': 'test@test.com'}
         self.assertEqual(json_output, self.user_model.json())
 
 if __name__ == '__main__':

@@ -14,7 +14,7 @@ class DataBaseIntegrationTests(BaseTest):
         self.user_model = UserModel(6, 'TestUser', 't@t.pl')
         self.assertIsNone(self.user_model.find_by_name('TestUser'))
         self.user_model.insert_into_table(self.user_model.username,
-                                    self.user_model.user_email)
+                                    self.user_model.password)
         self.assertIsNotNone(self.user_model.find_by_name('TestUser'))
 
     def test_store_model_crud(self):

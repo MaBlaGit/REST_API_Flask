@@ -1,13 +1,15 @@
 from models.user import UserModel
 from flask_restful import Resource, reqparse
+from flask_jwt import jwt_required
 
 
 class User(Resource):
 
+    @jwt_required()
     def get(self, name):
         users = UserModel.find_by_name(name)
         if users:
-            return {'user': [user.json() for user in users]}, 200
+            return {'user': users.json()}, 200
         return {'message': 'User not found!'}, 404
 
 
@@ -28,7 +30,7 @@ class UserRegister(Resource):
                             required=True,
                             help='This field is required!')
 
-        parser.add_argument('user_email',
+        parser.add_argument('password',
                             type=str,
                             required=True,
                             help='This field is required!')
@@ -39,5 +41,5 @@ class UserRegister(Resource):
             return {'message': 'User with the same name already exists in database!'}
         else:
             UserModel.insert_into_table(data_payload['username'],
-                                        data_payload['user_email'])
+                                        data_payload['password'])
             return {'message': 'User successfully added to the database!'}, 201
