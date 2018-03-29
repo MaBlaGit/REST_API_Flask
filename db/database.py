@@ -6,7 +6,7 @@ def create_database(db_path):
     create_user_table = '{}{}{}'.format(
                         'CREATE TABLE IF NOT EXISTS',
                         ' user(id INTEGER PRIMARY KEY,',
-                        ' username text NOT NULL, user_email text NOT NULL);'
+                        ' username text NOT NULL, password text NOT NULL);'
                         )
 
     cursor.execute(create_user_table)
