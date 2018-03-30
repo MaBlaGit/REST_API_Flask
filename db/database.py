@@ -39,7 +39,7 @@ def create_database(db_path):
     cursor.execute('INSERT OR REPLACE INTO store VALUES(3, "motorbike", 599.99);')
     cursor.execute('INSERT OR REPLACE INTO store VALUES(4, "go-cart", 20050.99);')
 
-    cursor.execute('INSERT OR REPLACE INTO purchase_history VALUES(1, "car_1", 1, 1);')
+    cursor.execute('INSERT OR REPLACE INTO purchase_history VALUES(1, "car", 1, 1);')
 
     connection.commit()
     connection.close()

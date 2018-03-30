@@ -1,6 +1,6 @@
 import sqlite3
+# should be from models.user import UserModel
 from models.user import UserModel
-from models.store import StoreModel
 
 
 class PurchaseHistoryModel:
@@ -35,7 +35,7 @@ class PurchaseHistoryModel:
     def json(self):
         return {
             'user': self.user_id,
-            'product id': self.id,
+            'product history id': self.id,
             'product name': self.product,
             'product store number': self.product_id
         }
