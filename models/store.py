@@ -1,5 +1,4 @@
 import sqlite3
-# if doesn't work, add models... to imports
 from models.user import UserModel
 from models.purchase_history import PurchaseHistoryModel
 
@@ -12,7 +11,6 @@ class StoreModel:
         self.price = price
 
     @classmethod
-    # path should be './db/datashop.db'
     def find_by_product(cls, product):
         products = list()
         connection = sqlite3.connect('./db/datashop.db')
@@ -58,11 +56,11 @@ class StoreModel:
 
 class ShoppingStore:
 
-    def __init__(id, product, user_id, product_id):
-        self.id = id
-        self.product = product
-        self.user_id = user_id
-        self.product_id = product_id
+    # def __init__(id, product, user_id, product_id):
+    #     self.id = id
+    #     self.product = product
+    #     self.user_id = user_id
+    #     self.product_id = product_id
 
     @classmethod
     def buy_product(cls, username, product):

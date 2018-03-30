@@ -3,6 +3,7 @@ sys.path.append('../..')
 from base_test import BaseTest
 from models.user import UserModel
 from models.store import StoreModel
+from models.purchase_history import PurchaseHistoryModel
 import os
 os.chdir('../..')
 import unittest
@@ -21,7 +22,6 @@ class DataBaseIntegrationTests(BaseTest):
         self.store_model = StoreModel(6, 'TestProduct', 19.99)
         self.assertIsNone(self.store_model.find_by_product('TestProduct'))
         self.assertIsNotNone(self.store_model.find_by_product('car_1'))
-
 
 if __name__ == '__main__':
     unittest.main()

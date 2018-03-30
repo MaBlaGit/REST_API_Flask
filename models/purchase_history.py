@@ -1,5 +1,4 @@
 import sqlite3
-# should be from models.user import UserModel
 from models.user import UserModel
 
 
@@ -12,6 +11,23 @@ class PurchaseHistoryModel:
         self.product = product
         self.user_id = user_id
         self.product_id = product_id
+
+    @classmethod
+    def find_history_product_by_name(cls, name):
+
+        history_products = list()
+
+        connection = sqlite3.connect(cls.db_path)
+        cursor = connection.cursor()
+        query = 'SELECT * FROM purchase_history WHERE product=?;'
+        resluts = cursor.execute(query, (name,))
+        rows = resluts.fetchall()
+        if rows:
+            for row in rows:
+                product = PurchaseHistoryModel(row[0], row[1], row[2], row[3])
+                history_products.append(product)
+            connection.close()
+            return history_products
 
     @classmethod
     def find_products_related_with_user_name(cls, name):
