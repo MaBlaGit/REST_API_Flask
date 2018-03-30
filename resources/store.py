@@ -1,4 +1,4 @@
-from models.store import StoreModel
+from models.store import StoreModel, ShoppingStore
 from flask_restful import Resource, reqparse
 
 
@@ -40,3 +40,24 @@ class StoreProductList(Resource):
             return {'products': [product.json() for product in products]}, 200
         else:
             return {'message': 'No products found!'}, 404
+
+
+class Shopping(Resource):
+
+    def post(self):
+        parser = reqparse.RequestParser()
+
+        parser.add_argument('username',
+                            type=str,
+                            required=True,
+                            help='This field is mandatory!')
+
+        parser.add_argument('product',
+                            type=str,
+                            required=True,
+                            help='This field is mandatory!')
+
+        data_payload = parser.parse_args()
+
+        return ShoppingStore.buy_product(data_payload['username'],
+                                         data_payload['product'])

@@ -4,6 +4,7 @@ import json
 import os
 from database import create_database
 
+
 class UserEndpointsTest(unittest.TestCase):
 
     @classmethod
@@ -13,19 +14,35 @@ class UserEndpointsTest(unittest.TestCase):
         create_database('../../db/datashop.db')
         cls.uri = 'http://127.0.0.1:5000'
 
+    def test_user_authorization(cls):
+        cls.uri += '/auth'
+        post_request = requests.post(cls.uri, data=json.dumps({'username': 'test_1', 'password': 'test_1@test.pl'}),
+        headers={'Content-Type': 'application/json'})
+        cls.assertIn('access_token', json.loads(post_request.content).keys())
+
     def test_users_status_code(cls):
         cls.uri += '/users'
         uri_request = requests.get(cls.uri)
         cls.assertEqual(200, uri_request.status_code)
 
-    def test_add_user_to_database(cls):
+    def test_register_new_user(cls):
         payload = {	'username': 'test_6',
 	                'password': 'test_6@test.pl'}
+
         cls.uri += '/register'
         post = requests.post(cls.uri, json=payload)
         content_decode = json.loads(post.content.decode('utf-8'))
         cls.assertEqual('User successfully added to the database!',
                           content_decode.get('message'))
+
+    def test_could_not_register_existing_user(cls):
+        payload = {	'username': 'test_1',
+	                'password': 'test_1@test.pl'}
+
+        cls.uri += '/register'
+        post = requests.post(cls.uri, json=payload)
+        cls.assertEqual(400, post.status_code)
+
 
     def test_users_response_check(cls):
         cls.uri += '/users'

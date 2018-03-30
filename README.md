@@ -1,9 +1,9 @@
 # REST API with Flask, Flask-RESTful and SQLite.
 
 ## Description:
-Simple RESTFul Flask application (still in development) with bunch of automated API tests. Main reason for developing this app is writing automated tests against exposed endpoints (with usage of Python requests library and REST Assured (Java) in the near future).
+Simple RESTFul Flask application (still in development) with bunch of automated API tests. Main reason for developing this app is writing automated tests against exposed endpoints (with usage of Python requests library, Postman (form manual testing) and REST Assured (Java) in the near future).
 
-So far active and tested endpoints are:
+So far active endpoints are:
 
 GET /users
 
@@ -16,6 +16,19 @@ GET /products
 GET /product/name
 
 POST /product/name
+
+GET /history/name
+
+POST /shopping
+
+POST /auth
+
+
+App deployed on Heroku if you don't want to run it locally:
+
+https://flask-rest-api-demo.herokuapp.com
+
+If after clicking on the Heroku link, __Application Error__ is displayed, all free Dyno hour were used.
 
 ### Steps to run app and tests:
 

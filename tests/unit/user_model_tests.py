@@ -1,5 +1,5 @@
 import sys
-sys.path.append("../..")
+sys.path.append('../..')
 from models import user
 import unittest
 

@@ -9,6 +9,7 @@ class UserModel:
         self.password = password
 
     @classmethod
+    # path should be './db/datashop.db'
     def find_by_name(cls, name, db_path='./db/datashop.db'):
         connection = sqlite3.connect(db_path)
         cursor = connection.cursor()

@@ -1,4 +1,6 @@
 import sqlite3
+from models.user import UserModel
+from models.purchase_history import PurchaseHistoryModel
 
 
 class StoreModel:
@@ -50,3 +52,30 @@ class StoreModel:
         'product': self.product,
         'price': self.price
         }
+
+
+class ShoppingStore:
+
+    # def __init__(id, product, user_id, product_id):
+    #     self.id = id
+    #     self.product = product
+    #     self.user_id = user_id
+    #     self.product_id = product_id
+
+    @classmethod
+    def buy_product(cls, username, product):
+        user = UserModel.find_by_name(username)
+        if user:
+            products = StoreModel.find_by_product(product)
+            if products:
+                connection = sqlite3.connect('./db/datashop.db')
+                cusrsor = connection.cursor()
+                query = 'INSERT INTO purchase_history VALUES(NULL, ?, ?, ?);'
+                result = cusrsor.execute(query, (product, user.id, products[0].id,))
+                connection.commit()
+                connection.close()
+                return {'message': 'Selected product was bought!'}, 200
+            else:
+                return {'message': 'No product in database!'}, 404
+        else:
+            return {'message': 'Shopping impossible, no user in database!'}, 404

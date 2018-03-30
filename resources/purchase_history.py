@@ -14,3 +14,6 @@ class PurchaseHistory(Resource):
             return {
             'message': 'User and related prducts not found in database!'
             }, 404
+
+    def post(self, name, product):
+        pass
