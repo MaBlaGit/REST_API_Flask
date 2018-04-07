@@ -9,7 +9,6 @@ class UserModel:
         self.password = password
 
     @classmethod
-    # path should be './db/datashop.db'
     def find_by_name(cls, name, db_path='./db/datashop.db'):
         connection = sqlite3.connect(db_path)
         cursor = connection.cursor()
@@ -57,6 +56,23 @@ class UserModel:
             for row in rows:
                 users.append(UserModel(row[0], row[1], row[2]))
             return users
+        connection.close()
+
+    @classmethod
+    def delete_user(self, name, db_path='./db/datashop.db'):
+        connection = sqlite3.connect(db_path)
+        cursor = connection.cursor()
+
+        user_id_query_for_purchase_his = 'SELECT id FROM user WHERE username=?;'
+        user_id = cursor.execute(user_id_query_for_purchase_his, (name,))
+        result_user_id = str(user_id.fetchone()[0])
+
+        purchase_history_deletion = 'DELETE FROM purchase_history WHERE user_id=?;'
+        delete_user_history = cursor.execute(purchase_history_deletion, (result_user_id))
+
+        user_to_delete = 'DELETE FROM user WHERE username=?;'
+        delete_user = cursor.execute(user_to_delete, (name,))
+        connection.commit()
         connection.close()
 
     def json(self):
