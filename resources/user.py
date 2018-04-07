@@ -12,6 +12,9 @@ class User(Resource):
             return {'user': users.json()}, 200
         return {'message': 'User not found!'}, 404
 
+    def delete(self, name):
+        user_to_delete = UserModel.delete_user(name)
+        return {'message': 'User {0} was successfully deleted from database!'.format(name)}
 
 class UserList(Resource):
 

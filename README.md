@@ -9,6 +9,8 @@ GET /users
 
 GET /users/name
 
+DELETE /users/name
+
 POST /register
 
 GET /products
